@@ -6,6 +6,9 @@
 #include "DeltaEVTOL.hpp"
 #include "EchoEVTOL.hpp"
 
+int testsPassed = 0;
+int testsFailed = 0;
+
 void drainBattery(EVTOL& v) {
     while (!v.needsCharge()) {
         v.fly(0.1);
@@ -31,8 +34,10 @@ void testAlphaEVTOL() {
         if (a.getRemainingBattery() != a.getBatteryCapacity()) throw std::runtime_error("Reset failed");
 
         std::cout << "✅ PASSED\n";
+        ++testsPassed;
     } catch (const std::exception& e) {
         std::cerr << "❌ FAILED: " << e.what() << "\n";
+        ++testsFailed;
     }
 }
 
@@ -54,8 +59,10 @@ void testBravoEVTOL() {
         if (b.getRemainingBattery() != b.getBatteryCapacity()) throw std::runtime_error("Reset failed");
 
         std::cout << "✅ PASSED\n";
+        ++testsPassed;
     } catch (const std::exception& e) {
         std::cerr << "❌ FAILED: " << e.what() << "\n";
+        ++testsFailed;
     }
 }
 
@@ -77,8 +84,10 @@ void testCharlieEVTOL() {
         if (c.getRemainingBattery() != c.getBatteryCapacity()) throw std::runtime_error("Reset failed");
 
         std::cout << "✅ PASSED\n";
+        ++testsPassed;
     } catch (const std::exception& e) {
         std::cerr << "❌ FAILED: " << e.what() << "\n";
+        ++testsFailed;
     }
 }
 
@@ -100,8 +109,10 @@ void testDeltaEVTOL() {
         if (d.getRemainingBattery() != d.getBatteryCapacity()) throw std::runtime_error("Reset failed");
 
         std::cout << "✅ PASSED\n";
+        ++testsPassed;
     } catch (const std::exception& e) {
         std::cerr << "❌ FAILED: " << e.what() << "\n";
+        ++testsFailed;
     }
 }
 
@@ -123,8 +134,10 @@ void testEchoEVTOL() {
         if (e.getRemainingBattery() != e.getBatteryCapacity()) throw std::runtime_error("Reset failed");
 
         std::cout << "✅ PASSED\n";
+        ++testsPassed;
     } catch (const std::exception& e) {
         std::cerr << "❌ FAILED: " << e.what() << "\n";
+        ++testsFailed;
     }
 }
 
@@ -134,5 +147,7 @@ int main() {
     testCharlieEVTOL();
     testDeltaEVTOL();
     testEchoEVTOL();
-    return 0;
+
+    std::cout << "\nTest Summary: " << testsPassed << " passed, " << testsFailed << " failed.\n";
+    return testsFailed == 0 ? 0 : 1;
 }
