@@ -5,18 +5,16 @@ set(CMAKE_CXX_STANDARD 17)
 
 # Include directories for headers
 include_directories(
-    ${CMAKE_SOURCE_DIR}/src
     ${CMAKE_SOURCE_DIR}/common
+    ${CMAKE_SOURCE_DIR}/src
 )
 
 # Gather all source files
 file(GLOB SRC_FILES src/*.cpp)
-file(GLOB TEST_FILES tests/*.cpp)
+list(REMOVE_ITEM SRC_FILES ${CMAKE_SOURCE_DIR}/src/main.cpp)
 
 # Main simulation executable
-add_executable(evtol_sim ${SRC_FILES})
+add_executable(evtol_sim ${SRC_FILES} src/main.cpp)
 
-# Unit test executable
-add_executable(test_vehicle tests/test_vehicle.cpp src/AlphaEVTOL.cpp)
-
-# Optionally link libraries or add other targets if needed
+# Unit test executable (excluding main.cpp)
+add_executable(test_evtol_methods tests/test_evtol_methods.cpp ${SRC_FILES})

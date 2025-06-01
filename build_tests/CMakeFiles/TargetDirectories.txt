@@ -1,0 +1,4 @@
+/workspaces/EVTOL_Abstraction/build_tests/CMakeFiles/edit_cache.dir
+/workspaces/EVTOL_Abstraction/build_tests/CMakeFiles/test_evtol_methods.dir
+/workspaces/EVTOL_Abstraction/build_tests/CMakeFiles/rebuild_cache.dir
+/workspaces/EVTOL_Abstraction/build_tests/CMakeFiles/evtol_sim.dir

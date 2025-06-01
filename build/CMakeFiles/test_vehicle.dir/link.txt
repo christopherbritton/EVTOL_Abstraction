@@ -1,1 +1,0 @@
-/usr/bin/c++     CMakeFiles/test_vehicle.dir/tests/test_vehicle.cpp.o CMakeFiles/test_vehicle.dir/src/AlphaEVTOL.cpp.o  -o test_vehicle 
