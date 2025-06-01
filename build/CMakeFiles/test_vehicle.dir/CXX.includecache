@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../common/AlphaEVTOL.hpp
+EVTOL.hpp
+../common/EVTOL.hpp
+Config.hpp
+../common/Config.hpp
+
+../common/Config.hpp
+
+../common/EVTOL.hpp
+
+/workspaces/EVTOL_Abstraction/src/AlphaEVTOL.cpp
+AlphaEVTOL.hpp
+/workspaces/EVTOL_Abstraction/src/AlphaEVTOL.hpp
+
+/workspaces/EVTOL_Abstraction/tests/test_vehicle.cpp
+AlphaEVTOL.hpp
+/workspaces/EVTOL_Abstraction/tests/AlphaEVTOL.hpp
+cassert
+-
+iostream
+-
+

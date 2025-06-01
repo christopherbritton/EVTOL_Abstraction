@@ -1,23 +1,23 @@
 #include "DeltaEVTOL.hpp"
 
 void DeltaEVTOL::fly(double hours) {
-    double distance = getCruiseSpeed() * hours;
-    battery -= distance * getEnergyUsePerMile();
+    double distance = spec.cruiseSpeed * hours;
+    battery -= distance * spec.energyUsePerMile;
 }
 
 void DeltaEVTOL::charge() {
-    battery = getBatteryCapacity();
+    battery = spec.batteryCapacity;
 }
 
 bool DeltaEVTOL::needsCharge() const {
     return battery <= 0;
 }
 
-double DeltaEVTOL::getCruiseSpeed() const { return 90.0; }
-double DeltaEVTOL::getBatteryCapacity() const { return 120.0; }
-double DeltaEVTOL::getChargeTime() const { return 0.62; }
-double DeltaEVTOL::getEnergyUsePerMile() const { return 0.8; }
-int DeltaEVTOL::getPassengerCount() const { return 2; }
-double DeltaEVTOL::getFaultProbabilityPerHour() const { return 0.22; }
+double DeltaEVTOL::getCruiseSpeed() const { return spec.cruiseSpeed; }
+double DeltaEVTOL::getBatteryCapacity() const { return spec.batteryCapacity; }
+double DeltaEVTOL::getChargeTime() const { return spec.chargeTime; }
+double DeltaEVTOL::getEnergyUsePerMile() const { return spec.energyUsePerMile; }
+int DeltaEVTOL::getPassengerCount() const { return spec.passengerCount; }
+double DeltaEVTOL::getFaultProbabilityPerHour() const { return spec.faultProbability; }
 double DeltaEVTOL::getRemainingBattery() const { return battery; }
-void DeltaEVTOL::resetBattery() { battery = getBatteryCapacity(); }
+void DeltaEVTOL::resetBattery() { battery = spec.batteryCapacity; }

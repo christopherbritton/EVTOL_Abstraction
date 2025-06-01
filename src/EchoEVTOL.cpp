@@ -1,23 +1,23 @@
 #include "EchoEVTOL.hpp"
 
 void EchoEVTOL::fly(double hours) {
-    double distance = getCruiseSpeed() * hours;
-    battery -= distance * getEnergyUsePerMile();
+    double distance = spec.cruiseSpeed * hours;
+    battery -= distance * spec.energyUsePerMile;
 }
 
 void EchoEVTOL::charge() {
-    battery = getBatteryCapacity();
+    battery = spec.batteryCapacity;
 }
 
 bool EchoEVTOL::needsCharge() const {
     return battery <= 0;
 }
 
-double EchoEVTOL::getCruiseSpeed() const { return 30.0; }
-double EchoEVTOL::getBatteryCapacity() const { return 150.0; }
-double EchoEVTOL::getChargeTime() const { return 0.3; }
-double EchoEVTOL::getEnergyUsePerMile() const { return 5.8; }
-int EchoEVTOL::getPassengerCount() const { return 2; }
-double EchoEVTOL::getFaultProbabilityPerHour() const { return 0.61; }
+double EchoEVTOL::getCruiseSpeed() const { return spec.cruiseSpeed; }
+double EchoEVTOL::getBatteryCapacity() const { return spec.batteryCapacity; }
+double EchoEVTOL::getChargeTime() const { return spec.chargeTime; }
+double EchoEVTOL::getEnergyUsePerMile() const { return spec.energyUsePerMile; }
+int EchoEVTOL::getPassengerCount() const { return spec.passengerCount; }
+double EchoEVTOL::getFaultProbabilityPerHour() const { return spec.faultProbability; }
 double EchoEVTOL::getRemainingBattery() const { return battery; }
-void EchoEVTOL::resetBattery() { battery = getBatteryCapacity(); }
+void EchoEVTOL::resetBattery() { battery = spec.batteryCapacity; }
